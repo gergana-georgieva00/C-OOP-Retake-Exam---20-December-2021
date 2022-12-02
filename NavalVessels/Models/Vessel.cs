@@ -76,12 +76,23 @@ namespace NavalVessels.Models
 
         public override string ToString()
         {
-            return $"- {this.Name}" + Environment.NewLine
-                + $" *Type: {this.GetType().Name}" + Environment.NewLine
-                + $" *Armor thickness: {this.ArmorThickness}" + Environment.NewLine
-                + $" *Main weapon caliber: {this.MainWeaponCaliber}" + Environment.NewLine
-                + $" *Speed: {this.Speed} knots" + Environment.NewLine 
-                + $" *Targets: {(this.targets.Count == 0 ? "None" : string.Join(", ", this.targets))}" + Environment.NewLine;
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"- {this.Name}");
+            sb.AppendLine($" *Type: {this.GetType().Name}");
+            sb.AppendLine($" *Armor thickness: {this.ArmorThickness}");
+            sb.AppendLine($" *Main weapon caliber: {this.MainWeaponCaliber}");
+            sb.AppendLine($" *Speed: {this.Speed} knots");
+            sb.AppendLine($" *Targets: {(this.targets.Count == 0 ? "None" : string.Join(", ", this.targets))}");
+
+            return sb.ToString().Trim();
+
+            //return $"- {this.Name}" + Environment.NewLine
+            //    + $" *Type: {this.GetType().Name}" + Environment.NewLine
+            //    + $" *Armor thickness: {this.ArmorThickness}" + Environment.NewLine
+            //    + $" *Main weapon caliber: {this.MainWeaponCaliber}" + Environment.NewLine
+            //    + $" *Speed: {this.Speed} knots" + Environment.NewLine 
+            //    + $" *Targets: {(this.targets.Count == 0 ? "None" : string.Join(", ", this.targets))}" + Environment.NewLine;
         }
     }
 }
