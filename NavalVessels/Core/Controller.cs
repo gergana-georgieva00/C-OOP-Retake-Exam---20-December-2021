@@ -43,7 +43,24 @@ namespace NavalVessels.Core
 
         public string AttackVessels(string attackingVesselName, string defendingVesselName)
         {
-            throw new NotImplementedException();
+            if (this.vessels.FindByName(attackingVesselName) is null || this.vessels.FindByName(defendingVesselName) is null)
+            {
+                return $"Vessel {attackingVesselName} could not be found.";
+            }
+
+            var attackingVessel = this.vessels.FindByName(attackingVesselName);
+            var defendingVessel = this.vessels.FindByName(defendingVesselName);
+
+            if (attackingVessel.ArmorThickness == 0 || defendingVessel.ArmorThickness == 0)
+            {
+                return $"Unarmored vessel {attackingVesselName} cannot attack or be attacked.";
+            }
+
+            attackingVessel.Attack(defendingVessel);
+            attackingVessel.Captain.IncreaseCombatExperience();
+            defendingVessel.Captain.IncreaseCombatExperience();
+
+            return "Vessel {defendingVessleName} was attacked by vessel {attackVessleName} - current armor thickness: {defenderArmorThinckness}.";
         }
 
         public string CaptainReport(string captainFullName)
