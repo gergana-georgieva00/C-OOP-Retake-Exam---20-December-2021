@@ -46,13 +46,13 @@ namespace NavalVessels.Core
             if (this.vessels.FindByName(attackingVesselName) is null || this.vessels.FindByName(defendingVesselName) is null)
             {
                 string result = "";
-                if (this.vessels.FindByName(attackingVesselName) is null)
+                if (!(this.vessels.FindByName(attackingVesselName) is null))
                 {
-                    result = attackingVesselName;
+                    result = defendingVesselName;
                 }
                 else
                 {
-                    result = defendingVesselName;
+                    result = attackingVesselName;
                 }
 
                 return $"Vessel {result} could not be found.";
@@ -64,13 +64,13 @@ namespace NavalVessels.Core
             if (attackingVessel.ArmorThickness == 0 || defendingVessel.ArmorThickness == 0)
             {
                 string result = "";
-                if (attackingVessel.ArmorThickness == 0)
+                if (!(attackingVessel.ArmorThickness == 0))
                 {
-                    result = attackingVesselName;
+                    result = defendingVesselName;
                 }
                 else
                 {
-                    result = defendingVesselName;
+                    result = attackingVesselName;
                 }
 
                 return $"Unarmored vessel {result} cannot attack or be attacked.";
@@ -157,6 +157,6 @@ namespace NavalVessels.Core
         }
 
         public string VesselReport(string vesselName)
-            => this.vessels.FindByName(vesselName).ToString();
+            => this.vessels.FindByName(vesselName).ToString().Trim();
     }
 }
