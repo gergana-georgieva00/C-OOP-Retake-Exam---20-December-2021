@@ -30,5 +30,18 @@ namespace NavalVessels.Models
                     break;
             }
         }
+
+        public override void RepairVessel()
+        {
+            if (this.ArmorThickness < 300)
+            {
+                this.ArmorThickness = initialArmorThickness;
+            }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $" *Sonar mode: {(this.SonarMode == true ? "ON" : "OFF")}";
+        }
     }
 }

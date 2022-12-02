@@ -71,7 +71,7 @@ namespace NavalVessels.Models
             this.targets.Add(target.Name);
         }
 
-        public void RepairVessel()
+        public virtual void RepairVessel()
         {
         }
 
