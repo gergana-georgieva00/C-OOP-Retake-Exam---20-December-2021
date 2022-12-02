@@ -22,7 +22,23 @@ namespace NavalVessels.Core
 
         public string AssignCaptain(string selectedCaptainName, string selectedVesselName)
         {
-            throw new NotImplementedException();
+            if (!this.captains.Any(c => c.FullName == selectedCaptainName))
+            {
+                return $"Captain {selectedCaptainName} could not be found.";
+            }
+            if (this.vessels.FindByName(selectedVesselName) is null)
+            {
+                return $"Vessel {selectedVesselName} could not be found.";
+            }
+            if (!(this.vessels.FindByName(selectedVesselName).Captain is null))
+            {
+                return $"Vessel {selectedVesselName} is already occupied.";
+            }
+
+            this.captains.Find(c => c.FullName == selectedCaptainName).AddVessel(this.vessels.FindByName(selectedVesselName));
+            this.vessels.FindByName(selectedVesselName).Captain = this.captains.Find(c => c.FullName == selectedCaptainName);
+
+            return $"Captain {selectedCaptainName} command vessel {selectedVesselName}.";
         }
 
         public string AttackVessels(string attackingVesselName, string defendingVesselName)
