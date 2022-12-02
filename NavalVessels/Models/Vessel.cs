@@ -60,11 +60,20 @@ namespace NavalVessels.Models
             {
                 throw new NullReferenceException("Target cannot be null.");
             }
+
+            target.ArmorThickness -= this.MainWeaponCaliber;
+
+            if (target.ArmorThickness < 0)
+            {
+                target.ArmorThickness = 0;
+            }
+
+            this.targets.Add(target.Name);
         }
 
         public void RepairVessel()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
