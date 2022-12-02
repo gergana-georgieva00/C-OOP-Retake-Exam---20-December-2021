@@ -95,7 +95,23 @@ namespace NavalVessels.Core
 
         public string ToggleSpecialMode(string vesselName)
         {
-            throw new NotImplementedException();
+            if (this.vessels.FindByName(vesselName) is null)
+            {
+                return $"Vessel {vesselName} could not be found.";
+            }
+
+            var vessel = this.vessels.FindByName(vesselName);
+            switch (vessel.GetType().Name)
+            {
+                case "Battleship":
+                    Battleship battleship = (Battleship)vessel;
+                    battleship.ToggleSonarMode();
+                    return $"Battleship {vesselName} toggled sonar mode.";
+                default:
+                    Submarine submarine = (Submarine)vessel;
+                    submarine.ToggleSubmergeMode();
+                    return $"Submarine {vesselName} toggled submerge mode.";
+            }
         }
 
         public string VesselReport(string vesselName)
