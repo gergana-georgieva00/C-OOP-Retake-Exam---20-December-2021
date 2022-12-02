@@ -27,7 +27,7 @@ namespace NavalVessels.Models
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Vessel name cannot be null or empty.");
+                    throw new ArgumentNullException("Vessel name cannot be null or empty.");
                 }
 
                 this.name = value;
