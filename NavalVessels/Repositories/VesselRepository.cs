@@ -19,17 +19,13 @@ namespace NavalVessels.Repositories
 
         public void Add(IVessel model)
         {
-            throw new NotImplementedException();
+            this.models.Add(model);
         }
 
         public IVessel FindByName(string name)
-        {
-            throw new NotImplementedException();
-        }
+            => this.models.Find(v => v.Name == name);
 
         public bool Remove(IVessel model)
-        {
-            throw new NotImplementedException();
-        }
+            => this.models.Remove(model);
     }
 }
