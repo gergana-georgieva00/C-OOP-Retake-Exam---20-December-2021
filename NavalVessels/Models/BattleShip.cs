@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 namespace NavalVessels.Models
 {
-    public class BattleShip : Vessel, IBattleship
+    public class Battleship : Vessel, IBattleship
     {
         private const int initialArmorThickness = 300;
-        public BattleShip(string name, double mainWeaponCaliber, double speed, double armourThickness) : base(name, mainWeaponCaliber, speed, armourThickness)
+        public Battleship(string name, double mainWeaponCaliber, double speed, double armourThickness) : base(name, mainWeaponCaliber, speed, armourThickness)
         {
             this.SonarMode = false;
         }
