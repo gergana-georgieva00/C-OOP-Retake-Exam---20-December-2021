@@ -14,19 +14,24 @@ namespace NavalVessels.Models
         public Captain(string fullName)
         {
             this.FullName = fullName;
+            this.CombatExperience = 0;
         }
 
-        public string FullName 
-        { 
-            get; 
-            private set; 
-        }
-
-        public int CombatExperience
+        public string FullName
         {
-            get;
-            private set;
+            get => this.fullName;
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("Captain full name cannot be null or empty string.");
+                }
+
+                this.fullName = value;
+            }
         }
+
+        public int CombatExperience { get; private set; }
 
         public ICollection<IVessel> Vessels => this.vessels.AsReadOnly();
 
