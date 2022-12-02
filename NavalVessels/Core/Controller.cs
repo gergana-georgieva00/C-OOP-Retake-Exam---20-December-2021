@@ -65,11 +65,12 @@ namespace NavalVessels.Core
                 case "Submarine":
                     vessel = new Submarine(name, mainWeaponCaliber, speed);
                     break;
-                case "Battleship":
+                default:
                     vessel = new Battleship(name, mainWeaponCaliber, speed);
                     break;
             }
 
+            this.vessels.Add(vessel);
             return $"{vesselType} {name} is manufactured with the main weapon caliber of {mainWeaponCaliber} inches and a maximum speed of {speed} knots.";
         }
 
