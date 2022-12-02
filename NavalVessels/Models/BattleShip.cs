@@ -33,7 +33,7 @@ namespace NavalVessels.Models
 
         public override void RepairVessel()
         {
-            if (this.ArmorThickness < 300)
+            if (this.ArmorThickness < initialArmorThickness)
             {
                 this.ArmorThickness = initialArmorThickness;
             }

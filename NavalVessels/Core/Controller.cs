@@ -100,15 +100,15 @@ namespace NavalVessels.Core
 
         public string ProduceVessel(string name, string vesselType, double mainWeaponCaliber, double speed)
         {
-            if (vesselType != "Submarine" && vesselType != "Battleship")
-            {
-                return "Invalid vessel type.";
-            }
             if (!(this.vessels.FindByName(name) is null))
             {
                 return $"{vesselType} vessel {name} is already manufactured.";
             }
-
+            if (vesselType != "Submarine" && vesselType != "Battleship")
+            {
+                return "Invalid vessel type.";
+            }
+            
             IVessel vessel;
             switch (vesselType)
             {
@@ -132,7 +132,7 @@ namespace NavalVessels.Core
             }
 
             this.vessels.FindByName(vesselName).RepairVessel();
-            return "Vessel {vesselName} was repaired.";
+            return $"Vessel {vesselName} was repaired.";
         }
 
         public string ToggleSpecialMode(string vesselName)
