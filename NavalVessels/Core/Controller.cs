@@ -47,9 +47,7 @@ namespace NavalVessels.Core
         }
 
         public string CaptainReport(string captainFullName)
-        {
-            throw new NotImplementedException();
-        }
+            => this.captains.Find(c => c.FullName == captainFullName).Report();
 
         public string HireCaptain(string fullName)
         {
