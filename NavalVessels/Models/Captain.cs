@@ -61,7 +61,7 @@ namespace NavalVessels.Models
                 this.vessels.ForEach(v => sb.AppendLine(v.ToString()));
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
     }
 }

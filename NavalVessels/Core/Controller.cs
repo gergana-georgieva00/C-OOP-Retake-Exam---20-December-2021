@@ -60,7 +60,7 @@ namespace NavalVessels.Core
             attackingVessel.Captain.IncreaseCombatExperience();
             defendingVessel.Captain.IncreaseCombatExperience();
 
-            return "Vessel {defendingVessleName} was attacked by vessel {attackVessleName} - current armor thickness: {defenderArmorThinckness}.";
+            return $"Vessel {defendingVesselName} was attacked by vessel {attackingVesselName} - current armor thickness: {defendingVessel.ArmorThickness}.";
         }
 
         public string CaptainReport(string captainFullName)

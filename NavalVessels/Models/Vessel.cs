@@ -83,7 +83,7 @@ namespace NavalVessels.Models
                 + $" *Armor thickness: {this.ArmorThickness}" + Environment.NewLine
                 + $" *Main weapon caliber: {this.MainWeaponCaliber}" + Environment.NewLine
                 + $" *Speed: {this.Speed} knots" + Environment.NewLine 
-                + $" *Targets: {(this.targets.Count == 0 ? "None" : string.Join(", ", this.targets))}";
+                + $" *Targets: {(this.targets.Count == 0 ? "None" : string.Join(", ", this.targets))}" + Environment.NewLine;
         }
     }
 }
