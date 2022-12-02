@@ -9,6 +9,7 @@ namespace NavalVessels.Models
     {
         private string name;
         private ICaptain captain;
+        private List<string> targets;
 
         public Vessel(string name, double mainWeaponCaliber, double speed, double armourThickness)
         {
@@ -18,20 +19,47 @@ namespace NavalVessels.Models
             this.ArmorThickness = armourThickness;
         }
 
-        public string Name { get; private set; }
+        public string Name 
+        {
+            get => this.name;
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Vessel name cannot be null or empty.");
+                }
 
-        public ICaptain Captain { get; set; }
+                this.name = value;
+            }
+        }
+
+        public ICaptain Captain 
+        {
+            get => this.captain;
+            set
+            {
+                if (value is null)
+                {
+                    throw new NullReferenceException("Captain cannot be null.");
+                }
+
+                this.captain = value;
+            }
+        }
         public double ArmorThickness { get; set; }
 
         public double MainWeaponCaliber { get; private set; }
 
         public double Speed { get; private set; }
 
-        public ICollection<string> Targets => throw new NotImplementedException();
+        public ICollection<string> Targets => this.targets.AsReadOnly();
 
         public void Attack(IVessel target)
         {
-            throw new NotImplementedException();
+            if (target is null)
+            {
+                throw new NullReferenceException("Target cannot be null.");
+            }
         }
 
         public void RepairVessel()
