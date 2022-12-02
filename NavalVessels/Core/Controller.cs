@@ -45,7 +45,17 @@ namespace NavalVessels.Core
         {
             if (this.vessels.FindByName(attackingVesselName) is null || this.vessels.FindByName(defendingVesselName) is null)
             {
-                return $"Vessel {attackingVesselName} could not be found.";
+                string result = "";
+                if (this.vessels.FindByName(attackingVesselName) is null)
+                {
+                    result = attackingVesselName;
+                }
+                else
+                {
+                    result = defendingVesselName;
+                }
+
+                return $"Vessel {result} could not be found.";
             }
 
             var attackingVessel = this.vessels.FindByName(attackingVesselName);
@@ -53,7 +63,17 @@ namespace NavalVessels.Core
 
             if (attackingVessel.ArmorThickness == 0 || defendingVessel.ArmorThickness == 0)
             {
-                return $"Unarmored vessel {attackingVesselName} cannot attack or be attacked.";
+                string result = "";
+                if (attackingVessel.ArmorThickness == 0)
+                {
+                    result = attackingVesselName;
+                }
+                else
+                {
+                    result = defendingVesselName;
+                }
+
+                return $"Unarmored vessel {result} cannot attack or be attacked.";
             }
 
             attackingVessel.Attack(defendingVessel);
@@ -68,13 +88,12 @@ namespace NavalVessels.Core
 
         public string HireCaptain(string fullName)
         {
-            var captain = new Captain(fullName);
-
             if (this.captains.Any(c => c.FullName == fullName))
             {
                 return $"Captain {fullName} is already hired.";
             }
 
+            var captain = new Captain(fullName);
             this.captains.Add(captain);
             return $"Captain {fullName} is hired.";
         }

@@ -72,9 +72,7 @@ namespace NavalVessels.Models
             this.targets.Add(target.Name);
         }
 
-        public virtual void RepairVessel()
-        {
-        }
+        public abstract void RepairVessel();
 
         public override string ToString()
         {

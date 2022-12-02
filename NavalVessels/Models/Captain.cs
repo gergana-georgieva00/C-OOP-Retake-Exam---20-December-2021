@@ -8,7 +8,6 @@ namespace NavalVessels.Models
     public class Captain : ICaptain
     {
         private string fullName;
-        private int combatExperience;
         private List<IVessel> vessels;
 
         public Captain(string fullName)
@@ -61,7 +60,7 @@ namespace NavalVessels.Models
                 this.vessels.ForEach(v => sb.AppendLine(v.ToString()));
             }
 
-            return sb.ToString().Trim();
+            return sb.ToString().TrimEnd();
         }
     }
 }
