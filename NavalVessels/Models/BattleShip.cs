@@ -7,7 +7,7 @@ namespace NavalVessels.Models
     public class Battleship : Vessel, IBattleship
     {
         private const int initialArmorThickness = 300;
-        public Battleship(string name, double mainWeaponCaliber, double speed, double armourThickness) : base(name, mainWeaponCaliber, speed, armourThickness)
+        public Battleship(string name, double mainWeaponCaliber, double speed) : base(name, mainWeaponCaliber, speed, 300)
         {
             this.SonarMode = false;
         }

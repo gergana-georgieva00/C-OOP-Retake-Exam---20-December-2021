@@ -1,8 +1,10 @@
 ﻿using NavalVessels.Core.Contracts;
+using NavalVessels.Models;
 using NavalVessels.Models.Contracts;
 using NavalVessels.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NavalVessels.Core
@@ -35,12 +37,40 @@ namespace NavalVessels.Core
 
         public string HireCaptain(string fullName)
         {
-            throw new NotImplementedException();
+            var captain = new Captain(fullName);
+
+            if (this.captains.Any(c => c.FullName == fullName))
+            {
+                return $"Captain {fullName} is already hired.";
+            }
+
+            this.captains.Add(captain);
+            return $"Captain {fullName} is hired.";
         }
 
         public string ProduceVessel(string name, string vesselType, double mainWeaponCaliber, double speed)
         {
-            throw new NotImplementedException();
+            if (vesselType != "Submarine" && vesselType != "Battleship")
+            {
+                return "Invalid vessel type.";
+            }
+            if (!(this.vessels.FindByName(name) is null))
+            {
+                return $"{vesselType} vessel {name} is already manufactured.";
+            }
+
+            IVessel vessel;
+            switch (vesselType)
+            {
+                case "Submarine":
+                    vessel = new Submarine(name, mainWeaponCaliber, speed);
+                    break;
+                case "Battleship":
+                    vessel = new Battleship(name, mainWeaponCaliber, speed);
+                    break;
+            }
+
+            return $"{vesselType} {name} is manufactured with the main weapon caliber of {mainWeaponCaliber} inches and a maximum speed of {speed} knots.";
         }
 
         public string ServiceVessel(string vesselName)

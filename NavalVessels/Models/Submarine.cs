@@ -9,7 +9,7 @@ namespace NavalVessels.Models
     {
         private const int initialArmorThickness = 200;
 
-        public Submarine(string name, double mainWeaponCaliber, double speed, double armourThickness) : base(name, mainWeaponCaliber, speed, armourThickness)
+        public Submarine(string name, double mainWeaponCaliber, double speed) : base(name, mainWeaponCaliber, speed, 200)
         {
             this.SubmergeMode = false;
         }
