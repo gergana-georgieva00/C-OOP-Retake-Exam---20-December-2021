@@ -90,7 +90,13 @@ namespace NavalVessels.Core
 
         public string ServiceVessel(string vesselName)
         {
-            throw new NotImplementedException();
+            if (this.vessels.FindByName(vesselName) is null)
+            {
+                return $"Vessel {vesselName} could not be found.";
+            }
+
+            this.vessels.FindByName(vesselName).RepairVessel();
+            return "Vessel {vesselName} was repaired.";
         }
 
         public string ToggleSpecialMode(string vesselName)
