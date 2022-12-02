@@ -48,12 +48,20 @@ namespace NavalVessels.Models
 
         public void IncreaseCombatExperience()
         {
-            throw new NotImplementedException();
+            this.CombatExperience += 10;
         }
 
         public string Report()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"{FullName} has {CombatExperience} combat experience and commands {vessels.Count} vessels.");
+
+            if (this.vessels.Count > 0)
+            {
+                this.vessels.ForEach(v => sb.AppendLine(v.ToString()));
+            }
+
+            return sb.ToString();
         }
     }
 }
