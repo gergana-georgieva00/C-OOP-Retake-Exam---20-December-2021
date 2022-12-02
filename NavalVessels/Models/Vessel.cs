@@ -48,9 +48,9 @@ namespace NavalVessels.Models
         }
         public double ArmorThickness { get; set; }
 
-        public double MainWeaponCaliber { get; private set; }
+        public double MainWeaponCaliber { get; protected set; }
 
-        public double Speed { get; private set; }
+        public double Speed { get; protected set; }
 
         public ICollection<string> Targets => this.targets.AsReadOnly();
 
