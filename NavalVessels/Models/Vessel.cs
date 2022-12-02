@@ -13,6 +13,7 @@ namespace NavalVessels.Models
 
         public Vessel(string name, double mainWeaponCaliber, double speed, double armourThickness)
         {
+            this.targets = new List<string>();
             this.Name = name;
             this.MainWeaponCaliber = mainWeaponCaliber;
             this.Speed = speed;

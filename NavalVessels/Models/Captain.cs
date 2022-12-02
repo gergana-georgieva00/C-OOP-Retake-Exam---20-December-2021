@@ -13,6 +13,7 @@ namespace NavalVessels.Models
 
         public Captain(string fullName)
         {
+            this.vessels = new List<IVessel>();
             this.FullName = fullName;
             this.CombatExperience = 0;
         }
@@ -37,7 +38,12 @@ namespace NavalVessels.Models
 
         public void AddVessel(IVessel vessel)
         {
-            throw new NotImplementedException();
+            if (vessel is null)
+            {
+                throw new NullReferenceException("Null vessel cannot be added to the captain.");
+            }
+
+            this.vessels.Add(vessel);
         }
 
         public void IncreaseCombatExperience()
